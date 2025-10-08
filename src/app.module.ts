@@ -8,7 +8,7 @@ import { ClinicaModule } from './clinica/clinica.module';
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    MongooseModule.forRoot(process.env.MONGO_URI || ''),
+    MongooseModule.forRoot(process.env.MONGO_URI ?? 'mongodb://localhost/clinica-digital'),
     ClinicaModule,
   ],
   controllers: [AppController],
