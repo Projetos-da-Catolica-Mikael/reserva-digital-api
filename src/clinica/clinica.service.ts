@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateClinicaDto } from './dto/create-clinica.dto';
@@ -13,8 +13,14 @@ export class ClinicaService {
   ) { }
 
   async create(createClinicaDto: CreateClinicaDto): Promise<Clinica> {
-    const created = new this.clinicaModel(createClinicaDto);
-    return created.save();
+    const clinicaExistente = await this.clinicaModel.findOne({ cnpj: createClinicaDto.cnpj });
+
+    if (clinicaExistente) {
+      throw new ConflictException('CNPJ já cadastrado para outra clínica.');
+    }
+
+    const clinica = new this.clinicaModel(createClinicaDto);
+    return clinica.save();
   }
 
   async findAll(): Promise<Clinica[]> {
