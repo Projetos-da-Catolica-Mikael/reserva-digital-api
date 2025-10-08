@@ -34,10 +34,23 @@ export class ClinicaService {
   }
 
   async update(id: string, updateClinicaDto: UpdateClinicaDto): Promise<Clinica> {
+    if (updateClinicaDto.cnpj) {
+      const clinicaComMesmoCnpj = await this.clinicaModel.findOne({
+        cnpj: updateClinicaDto.cnpj,
+        _id: { $ne: id },
+      });
+
+      if (clinicaComMesmoCnpj) {
+        throw new ConflictException('Já existe outra clínica com este CNPJ.');
+      }
+    }
+
     const updated = await this.clinicaModel
       .findByIdAndUpdate(id, updateClinicaDto, { new: true })
       .exec();
+
     if (!updated) throw new NotFoundException('Clínica não encontrada');
+
     return updated;
   }
 
