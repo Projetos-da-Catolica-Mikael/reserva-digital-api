@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsArray, IsEmail, IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import { IsArray, IsEmail, IsNotEmpty, IsOptional, IsString, Length, Matches } from 'class-validator';
 
 export class CreateClinicaDto {
   @ApiProperty({ example: 'Clínica Vida Saudável', description: 'Nome da clínica' })
@@ -7,9 +7,14 @@ export class CreateClinicaDto {
   @IsNotEmpty()
   nome: string;
 
-  @ApiProperty({ example: '12.345.678/0001-99', description: 'CNPJ da clínica' })
+  @ApiProperty({
+    example: '12345678000199',
+    description: 'CNPJ sem máscara (apenas números)',
+  })
   @IsString()
   @IsNotEmpty()
+  @Matches(/^\d+$/, { message: 'O CNPJ deve conter apenas números.' })
+  @Length(14, 14, { message: 'O CNPJ deve ter exatamente 14 dígitos.' })
   cnpj: string;
 
   @ApiProperty({ example: '(11) 98765-4321', required: false })
