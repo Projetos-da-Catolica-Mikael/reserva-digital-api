@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { ClinicaService } from './clinica.service';
 import { CreateClinicaDto } from './dto/create-clinica.dto';
@@ -8,13 +8,6 @@ import { UpdateClinicaDto } from './dto/update-clinica.dto';
 @Controller('clinicas')
 export class ClinicaController {
   constructor(private readonly clinicaService: ClinicaService) { }
-
-  @Post()
-  @ApiOperation({ summary: 'Cria uma nova clínica' })
-  @ApiResponse({ status: 201, description: 'Clínica criada com sucesso' })
-  create(@Body() createClinicaDto: CreateClinicaDto) {
-    return this.clinicaService.create(createClinicaDto);
-  }
 
   @Get()
   @ApiOperation({ summary: 'Lista todas as clínicas' })
@@ -28,7 +21,14 @@ export class ClinicaController {
     return this.clinicaService.findOne(id);
   }
 
-  @Patch(':id')
+  @Post()
+  @ApiOperation({ summary: 'Cria uma nova clínica' })
+  @ApiResponse({ status: 201, description: 'Clínica criada com sucesso' })
+  create(@Body() createClinicaDto: CreateClinicaDto) {
+    return this.clinicaService.create(createClinicaDto);
+  }
+
+  @Put(':id')
   @ApiOperation({ summary: 'Atualiza uma clínica existente' })
   update(@Param('id') id: string, @Body() updateClinicaDto: UpdateClinicaDto) {
     return this.clinicaService.update(id, updateClinicaDto);
