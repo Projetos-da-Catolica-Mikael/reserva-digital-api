@@ -19,7 +19,7 @@ async function bootstrap() {
 
   const document = SwaggerModule.createDocument(app, config);
 
-  app.use('/', swaggerUi.serve, swaggerUi.setup(document, {
+  app.use('/docs', swaggerUi.serve, swaggerUi.setup(document, {
     customSiteTitle: 'Clínica Digital API Docs',
     swaggerOptions: {
       persistAuthorization: true,
