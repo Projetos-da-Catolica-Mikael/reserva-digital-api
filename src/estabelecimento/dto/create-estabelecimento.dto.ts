@@ -1,11 +1,16 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsArray, IsEmail, IsNotEmpty, IsOptional, IsString, Length, Matches } from 'class-validator';
 
-export class CreateClinicaDto {
-  @ApiProperty({ example: 'Clínica Vida Saudável', description: 'Nome da clínica' })
+export class CreateEstabelecimentoDto {
+  @ApiProperty({ example: 'Estabelecimento Vida Saudável', description: 'Nome do estabelecimento' })
   @IsString()
   @IsNotEmpty()
   nome: string;
+
+  @ApiProperty({ example: 'estabelecimento', description: 'Tipo do estabelecimento' })
+  @IsString()
+  @IsNotEmpty()
+  tipo: string;
 
   @ApiProperty({
     example: '12345678000199',

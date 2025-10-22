@@ -1,15 +1,18 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
-export type PacienteDocument = Paciente & Document;
+export type EstabelecimentoDocument = Estabelecimento & Document;
 
 @Schema({ timestamps: true })
-export class Paciente {
+export class Estabelecimento {
   @Prop({ required: true })
   nome: string;
 
+  @Prop({ required: true })
+  tipo: string;
+
   @Prop({ required: true, unique: true })
-  cpf: string;
+  cnpj: string;
 
   @Prop()
   telefone: string;
@@ -20,17 +23,11 @@ export class Paciente {
   @Prop()
   endereco: string;
 
-  @Prop({ required: true })
-  dataNascimento: Date;
-
-  @Prop()
-  genero: string;
-
-  @Prop()
-  observacoes: string;
+  @Prop([String])
+  especialidades: string[];
 
   @Prop({ default: true })
   ativo: boolean;
 }
 
-export const PacienteSchema = SchemaFactory.createForClass(Paciente);
+export const EstabelecimentoSchema = SchemaFactory.createForClass(Estabelecimento);

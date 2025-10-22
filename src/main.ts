@@ -11,16 +11,16 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
 
   const config = new DocumentBuilder()
-    .setTitle('Clínica Digital API')
-    .setDescription('Documentação da API de gerenciamento de clínicas digitais')
+    .setTitle('Estabelecimento Digital API')
+    .setDescription('Documentação da API de gerenciamento de estabelecimentos digitais')
     .setVersion(version)
-    .addTag('clinicas')
+    .addTag('estabelecimentos')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
 
   app.use('/docs', swaggerUi.serve, swaggerUi.setup(document, {
-    customSiteTitle: 'Clínica Digital API Docs',
+    customSiteTitle: 'Estabelecimento Digital API Docs',
     swaggerOptions: {
       persistAuthorization: true,
     },
