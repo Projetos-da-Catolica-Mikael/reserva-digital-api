@@ -23,12 +23,12 @@
 
 ## Requisitos
 
-[] Cadastro/login de usuários e administradores.
-[] Cadastro de estabelecimentos/serviços.
-[] Agendamento de horário com confirmação.
-[] Cancelamento e histórico de reservas.
-[] Visualização de agenda em calendário interativo.
-[] Envio de e-mail (Mailgun)
+- [ ] Cadastro/login de usuários e administradores.
+- [ ] Cadastro de estabelecimentos/serviços.
+- [ ] Agendamento de horário com confirmação.
+- [ ] Cancelamento e histórico de reservas.
+- [ ] Visualização de agenda em calendário interativo.
+- [ ] Envio de e-mail (Mailgun)
 
 ## Description
 
