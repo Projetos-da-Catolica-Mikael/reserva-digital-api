@@ -11,16 +11,15 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
 
   const config = new DocumentBuilder()
-    .setTitle('Estabelecimento Digital API')
-    .setDescription('Documentação da API de gerenciamento de estabelecimentos digitais')
+    .setTitle('Reserva Digital API')
+    .setDescription('Documentação da API de gerenciamento de reservas digitais')
     .setVersion(version)
-    .addTag('estabelecimentos')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
 
   app.use('/docs', swaggerUi.serve, swaggerUi.setup(document, {
-    customSiteTitle: 'Estabelecimento Digital API Docs',
+    customSiteTitle: 'Reserva Digital API Docs',
     swaggerOptions: {
       persistAuthorization: true,
     },

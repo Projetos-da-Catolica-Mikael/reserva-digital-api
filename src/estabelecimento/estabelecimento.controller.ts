@@ -4,7 +4,7 @@ import { CreateEstabelecimentoDto } from './dto/create-estabelecimento.dto';
 import { UpdateEstabelecimentoDto } from './dto/update-estabelecimento.dto';
 import { EstabelecimentoService } from './estabelecimento.service';
 
-@ApiTags('estabelecimentos')
+@ApiTags('Estabelecimentos')
 @Controller('estabelecimentos')
 export class EstabelecimentoController {
   constructor(private readonly estabelecimentoService: EstabelecimentoService) { }
