@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsEmail, IsNotEmpty, MinLength } from 'class-validator';
 
-export class CreateUserDto {
+export class CreateUsuarioDto {
   @ApiProperty({ example: 'João da Silva', description: 'Nome completo do usuário' })
   @IsNotEmpty()
   nome: string;
@@ -14,5 +14,5 @@ export class CreateUserDto {
   @MinLength(6)
   password: string;
 
-  // Role não é aceito no registro; padrão é 'user'.
+  // Role não é aceito no registro; padrão é 'usuario'.
 }
