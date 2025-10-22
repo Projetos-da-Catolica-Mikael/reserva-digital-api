@@ -30,7 +30,7 @@ async function bootstrap() {
   await app.listen(port);
 
   console.log(`🚀 Aplicação rodando em: http://localhost:${port}`);
-  console.log(`📘 Swagger disponível em: http://localhost:${port}`);
+  console.log(`📘 Swagger disponível em: http://localhost:${port}/docs`);
 }
 
 bootstrap();
